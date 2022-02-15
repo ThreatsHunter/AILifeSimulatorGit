@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts.meta
 guid: 13d76343b274e2841b6d2d4c6392a7fd
+=======
+guid: 1bfac09ad33c4024bb50498e6a76fb06
+>>>>>>> Yan:Assets/SampleSceneAssets/Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
