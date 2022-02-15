@@ -23,29 +23,30 @@ public class UIWorld : MonoBehaviour
         if (!IsValid)
             return;
 
-        string _dayText = "";
+        timeText.text = $"<b>{GetDay(_day)}</b>{((int)(_time / 60f)).ToString("00")}:{(_time % 60).ToString("00")}";
+    }
 
-        switch (_day)
+    public string GetDay(int _dayIndex)
+    {
+        switch (_dayIndex)
         {
-            case 0: _dayText = "Lundi : ";
-                break;
-            case 1: _dayText = "Mardi : ";
-                break;
-            case 2: _dayText = "Mercredi : ";
-                break;
-            case 3: _dayText = "Jeudi : ";
-                break;
-            case 4: _dayText = "Vendredi : ";
-                break;
-            case 5: _dayText = "Samedi : ";
-                break;
-            case 6: _dayText = "Dimanche : ";
-                break;
-            default: _dayText = "Unknown : ";
-                break;
+            case 0:
+                return "Lundi :";
+            case 1:
+                return "Mardi :";
+            case 2:
+                return "Mercredi :";
+            case 3:
+                return "Jeudi :";
+            case 4:
+                return "Vendredi :";
+            case 5:
+                return "Samedi :";
+            case 6:
+                return "Dimanche :";
+            default:
+                return "Unknown :";
         }
-
-        timeText.text = $"<b>{_dayText}</b>{((int)(_time / 60f)).ToString("00")}:{(_time % 60).ToString("00")}";
     }
     #endregion
 }

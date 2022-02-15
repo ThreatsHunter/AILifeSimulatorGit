@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/ALS_AIData.cs.meta
-guid: 33f9d978b44db324982f3bdd7d076b7a
-=======
-guid: 01e8ba9edfd20ca40ad888a88cc128ea
->>>>>>> Yan:Assets/Scripts/Camera/CameraSettings.cs.meta
+guid: c08071abe2146f642b66cfbc77a55878
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

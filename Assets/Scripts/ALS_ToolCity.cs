@@ -6,9 +6,7 @@ public class ALS_ToolCity
     [MenuItem("Tool / Build")]
     public static void InitBuild()
     {
-        GameObject _object = new GameObject("Build", typeof(ALS_BuildData));
-        if (!_object) return;
-        Selection.activeGameObject = _object;
+        EditorWindow.GetWindow<ALS_BuildWindow>(true, "Init Build");
     }
     
     [MenuItem("Tool / AI")]

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/ALS_BuildData.cs.meta
-guid: 6bb3bc23180eaaa42a1bb0e06809f944
-=======
-guid: dca0750c7852c7446b37071a19708fb2
->>>>>>> Yan:Assets/Scripts/Camera/TPSCamera.cs.meta
+guid: f36b7f9a425ae9540ac9bb927d321772
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
