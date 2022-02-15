@@ -1,17 +1,19 @@
 using UnityEngine;
 using System;
 
-public class World : MonoBehaviour
+public class World : SingletonTemplate<World>
 {
     #region f/p
     public event Action<int, int> OnHourChanged = null;
 
     [SerializeField] Sun sun = new Sun();
-    [SerializeField, Range(0, 10)] float fWorldAcceleration = 1;
+    [SerializeField, Range(0.0f, 10.0f)] float fWorldAcceleration = 1;
     [SerializeField] float fHourLength = 1;
     [SerializeField, Range(0, 6)] int iDay = 0;
     [SerializeField, Range(0, 23)] int iHour = 0;
     [SerializeField, Range(0, 1440)] float fTime = 0;
+
+    public float WorldAcceleration => fWorldAcceleration;
     #endregion
 
     #region methods

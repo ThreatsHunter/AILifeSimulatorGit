@@ -1,5 +1,4 @@
 using UnityEditor;
-using UnityEngine;
 
 public class ALS_ToolCity
 {
@@ -12,8 +11,6 @@ public class ALS_ToolCity
     [MenuItem("Tool / AI")]
     public static void InitAI()
     {
-        GameObject _object = new GameObject("AI", typeof(ALS_AI), typeof(ALS_AIData));
-        if (!_object) return;
-        Selection.activeGameObject = _object;
+        EditorWindow.GetWindow<ALS_AIWindow>(true, "Init AI");
     }
 }
