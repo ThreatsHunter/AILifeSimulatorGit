@@ -17,7 +17,7 @@ public class ALS_BuildWindow : EditorWindow
     GUISkin skin = null;
     //planning
 
-    public bool IsValid => buildObject && buildName != string.Empty;
+    public bool IsValid => buildObject;
 
     private void OnEnable()
     {
