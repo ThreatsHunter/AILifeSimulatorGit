@@ -6,10 +6,10 @@ public abstract class ALS_Build : MonoBehaviour
 
     public Color BuildColor { get; set; } = Color.white;
 
-    private void OnDrawGizmos/*Selected*/()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = BuildColor;
-        Gizmos.DrawSphere(transform.position + Vector3.up * 2, 20.0f);
+        //Gizmos.DrawSphere(transform.position + Vector3.up * 2, 10.0f);
     }
 
     private void OnTriggerEnter(Collider other)
