@@ -6,14 +6,19 @@ public class Sun
 {
     #region f/p
     [SerializeField] Light directionalLight = null;
-    [SerializeField] Gradient ambientColor = null, directionalColor = null;
-    [SerializeField, Range(0, 1)] float fogDensityMax = .2f, fogDensityMin = 0;
+    [SerializeField] Gradient directionalColor = null;
 
     public bool IsValid => directionalLight;
-    public Light DirectionalLight { get => directionalLight; set => directionalLight = value; }
-    public Gradient AmbientColor => ambientColor;
-    public Gradient DirectionalColor => directionalColor;
-    public float FogDensityMax { get => fogDensityMax; set => fogDensityMax = value; }
-    public float FogDensityMin => fogDensityMin;
+    #endregion
+
+    #region methods
+    public void ChangeSun(float _percent)
+    {
+        if (!IsValid)
+            return;
+
+        directionalLight.color = directionalColor.Evaluate(_percent);
+        directionalLight.transform.localRotation = Quaternion.Euler(new Vector3((_percent * 360f) - 90f, 180f, 0f));
+    }
     #endregion
 }

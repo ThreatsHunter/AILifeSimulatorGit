@@ -4,7 +4,7 @@ public class CameraActor : MonoBehaviour
 {
     #region f/p
     [SerializeField] TPSCamera tpsCamera = null;
-    [SerializeField] float fMoveSpeed = 100;
+    [SerializeField] float fMoveSpeed = 100, fMaxZoom = 1000, fScrollSpeed = 10;
 
     public bool IsValid => tpsCamera;
     #endregion
@@ -36,8 +36,8 @@ public class CameraActor : MonoBehaviour
             return;
 
         float _y = tpsCamera.Settings.Offset.Y;
-        _y += _axis;
-        _y = Mathf.Clamp(_y, 10, 100);
+        _y += _axis * fScrollSpeed;
+        _y = Mathf.Clamp(_y, 10, fMaxZoom);
         tpsCamera.Settings.SetYOffset(_y);
     }
     #endregion
