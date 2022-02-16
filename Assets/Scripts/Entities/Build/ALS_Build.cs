@@ -7,5 +7,13 @@ public abstract class ALS_Build : MonoBehaviour
 
     public Color BuildColor { get => buildColor; set => buildColor = value; }
 
-    public virtual bool CanEnter() => amount <= capacity;
+    public virtual bool CanEnter()
+    {
+        bool _enter = amount <= capacity;
+
+        if (_enter)
+            amount++;
+
+        return _enter;
+    }
 }
