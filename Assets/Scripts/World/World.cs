@@ -29,7 +29,6 @@ public class World : SingletonTemplate<World>
         ChangeSun();
         ChangeTime();
     }
-    
     void ChangeTime()
     {
         fTime += (60f / (fHourLength * 60f)) * fWorldAcceleration;
@@ -50,7 +49,6 @@ public class World : SingletonTemplate<World>
         fTime %= 24f * 60f;
         UIManager.Instance.UIWorld.SetTime(fTime, iDay);
     }
-        
     void ChangeSun()
     {
         float _timePercent = fTime / (24f * 60f);

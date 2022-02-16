@@ -9,7 +9,7 @@ public class ALS_AIWindow : EditorWindow
     const string SKIN_ASSET = "PlanningSkin";
 
     GUISkin skin = null;
-    ALS_AI ai = null;
+    [SerializeField] ALS_AI ai = null;
     Vector2 scrollPosition = Vector2.zero;
 
     private void OnEnable()
@@ -36,17 +36,22 @@ public class ALS_AIWindow : EditorWindow
         for (int _day = -1; _day < 7; _day++)
         {
             EditorGUILayout.BeginVertical();
-            EditorGUILayout.LabelField(GetDay(_day));
+            EditorGUILayout.LabelField(GetDay(_day), ALS_WindowStyle.GetLabelStyle(16, Color.white));
 
             for (int _hour = 0; _hour < 24; _hour++)
             {
+                ALS_Service _service = null;
                 if (_day == -1)
                 {
-                    EditorGUILayout.LabelField($"{_hour} :");
+                    //EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField($"{_hour}H", ALS_WindowStyle.GetLabelStyle(16, Color.white));
+                    //GUILayout.FlexibleSpace();
+                    //_service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                    //EditorGUILayout.EndHorizontal();
                     continue;
                 }
 
-                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+               _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
                 if (!_service) continue;
                 ai.Planning.UpdatePlanning(_day, _hour, _service);
                 EditorGUILayout.Space(5.0f);
@@ -70,19 +75,19 @@ public class ALS_AIWindow : EditorWindow
         switch (_dayIndex)
         {
             case 0:
-                return "Lundi :";
+                return "Lundi";
             case 1:
-                return "Mardi :";
+                return "Mardi";
             case 2:
-                return "Mercredi :";
+                return "Mercredi";
             case 3:
-                return "Jeudi :";
+                return "Jeudi";
             case 4:
-                return "Vendredi :";
+                return "Vendredi";
             case 5:
-                return "Samedi :";
+                return "Samedi";
             case 6:
-                return "Dimanche :";
+                return "Dimanche";
             default:
                 return "";
         }

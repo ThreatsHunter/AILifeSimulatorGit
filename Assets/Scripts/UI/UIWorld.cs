@@ -26,7 +26,7 @@ public class UIWorld : MonoBehaviour
         timeText.text = $"<b>{GetDay(_day)}</b>{((int)(_time / 60f)).ToString("00")}:{(_time % 60).ToString("00")}";
     }
 
-    public string GetDay(int _dayIndex)
+    string GetDay(int _dayIndex)
     {
         switch (_dayIndex)
         {
