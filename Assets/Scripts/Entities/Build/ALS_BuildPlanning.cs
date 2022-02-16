@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class ALS_BuildPlanning
 {
     [SerializeField] bool[ , ] buildPlanning = null;
