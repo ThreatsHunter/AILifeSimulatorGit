@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class ALS_AIPlanning
 {
     [SerializeField] ALS_Service[ , ] services = new ALS_Service[7, 24];

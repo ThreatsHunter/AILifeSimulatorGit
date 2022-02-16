@@ -1,7 +1,6 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class ALS_AIWindow : EditorWindow
 {
@@ -12,7 +11,6 @@ public class ALS_AIWindow : EditorWindow
     GUISkin skin = null;
     ALS_AI ai = null;
     Vector2 scrollPosition = Vector2.zero;
-    ALS_Service service = null;
 
     private void OnEnable()
     {
@@ -31,7 +29,7 @@ public class ALS_AIWindow : EditorWindow
 
     void DisplayPlanning()
     {
-        EditorGUILayout.LabelField("Set AI planning");
+        if (!ai) return;
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         EditorGUILayout.BeginHorizontal();
 
@@ -49,7 +47,9 @@ public class ALS_AIWindow : EditorWindow
                     continue;
                 }
 
-                ai.Planning.UpdatePlanning(_day, _hour, (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true));
+                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                if (!_service) continue;
+                ai.Planning.UpdatePlanning(_day, _hour, _service);
                 EditorGUILayout.Space(5.0f);
             }
 
@@ -66,4 +66,6 @@ public class ALS_AIWindow : EditorWindow
             Close();
         }
     }
+
+    public void SetTarget(ALS_AI _target) => ai = _target;
 }
