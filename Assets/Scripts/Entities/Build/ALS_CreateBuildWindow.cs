@@ -34,7 +34,7 @@ public class ALS_CreateBuildWindow : EditorWindow
     {
         // Build datas
         EditorGUILayout.LabelField("Set build data");
-        buildObject = EditorGUILayout.ObjectField("Set build", buildObject, typeof(UnityEngine.Object), true) as GameObject;
+        buildObject = (GameObject)EditorGUILayout.ObjectField("Set build", buildObject, typeof(GameObject), true);
         buildColor = EditorGUILayout.ColorField("Set build color", buildColor);
         isHouse = EditorGUILayout.Toggle("Is a house ?", isHouse);
 
@@ -56,6 +56,7 @@ public class ALS_CreateBuildWindow : EditorWindow
 
             ALS_Build _build = buildObject.GetComponent<ALS_Build>();
             if (!_build) return;
+            _build.name = buildName;
             _build.BuildColor = buildColor;
 
             if (!isHouse)
