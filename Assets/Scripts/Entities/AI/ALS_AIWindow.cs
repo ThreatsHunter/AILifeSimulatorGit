@@ -40,21 +40,19 @@ public class ALS_AIWindow : EditorWindow
 
             for (int _hour = 0; _hour < 24; _hour++)
             {
-                ALS_Service _service = null;
                 if (_day == -1)
                 {
-                    EditorGUILayout.BeginHorizontal();
+                    //EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField($"{_hour}H", ALS_WindowStyle.GetLabelStyle(16, Color.white));
-                    GUILayout.FlexibleSpace();
-                    _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
-                    EditorGUILayout.EndHorizontal();
+                    //GUILayout.FlexibleSpace();
+                    //_service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                    //EditorGUILayout.EndHorizontal();
                     continue;
                 }
 
-                _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
-                _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
                 if (!_service) continue;
-                ai.Planning.UpdatePlanning(_day, _hour, _service);
+                ai.Planning[_day, _hour] = _service;
                 EditorGUILayout.Space(5.0f);
             }
 

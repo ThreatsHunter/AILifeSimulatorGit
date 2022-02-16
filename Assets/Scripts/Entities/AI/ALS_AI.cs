@@ -11,7 +11,7 @@ public class ALS_AI : MonoBehaviour
 
     public bool IsValid => home && navigation;
     public Vector3 TargetPosition => currentTarget ? currentTarget.transform.position : Vector3.zero;
-    public ALS_AIPlanning Planning { get; set; } = new ALS_AIPlanning();
+    public ALS_AIPlanning Planning { get => planning; set => planning = value; }
 
     private void Start()
     {
@@ -37,7 +37,11 @@ public class ALS_AI : MonoBehaviour
         navigation.SetDestination(TargetPosition);
 
         if (!navigation.hasPath && currentTarget.CanEnter())
+        {
             SetActive(false);
+            //currentTarget.Enter();
+            //currentTarget = null;
+        }
         else
             SetActive(true);
     }
