@@ -37,13 +37,8 @@ public class ALS_CreateBuildWindow : EditorWindow
         buildObject = (GameObject)EditorGUILayout.ObjectField("Set build", buildObject, typeof(GameObject), true);
         buildColor = EditorGUILayout.ColorField("Set build color", buildColor);
         isHouse = EditorGUILayout.Toggle("Is a house ?", isHouse);
-
-        if (!isHouse)
-        {
-            // name
-            buildName = EditorGUILayout.TextField("Set build name", buildName);
-            EditorGUILayout.Space(20.0f);
-        }
+        buildName = !isHouse ? EditorGUILayout.TextField("Set build name", buildName) : "House";
+        EditorGUILayout.Space(20.0f);
 
         // Create build
         if (GUILayout.Button("Create", ALS_WindowStyle.GetButtonStyle(skin.button, 22, Color.white, Color.green)))

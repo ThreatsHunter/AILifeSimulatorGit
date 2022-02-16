@@ -6,20 +6,13 @@ public abstract class ALS_Build : MonoBehaviour
 
     public Color BuildColor { get; set; } = Color.white;
 
-    private void OnTriggerEnter(Collider other)
+    public virtual bool CanEnter()
     {
-        ALS_AI _ia = other.gameObject.GetComponent<ALS_AI>();
-        if (!_ia || !CanEnter()) return;
-        _ia.SetActive(false);
-        amount++;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        ALS_AI _ia = other.gameObject.GetComponent<ALS_AI>();
-        if (!_ia) return;
-        _ia.SetActive(true);
-        amount--;
-    }
+        bool _enter = amount <= capacity;
 
-    protected virtual bool CanEnter() => amount <= capacity;
+        if (_enter)
+            amount++;
+
+        return _enter;
+    }
 }

@@ -29,40 +29,39 @@ public class ALS_BuildWindow : EditorWindow
     void DisplayPlanning()
     {
         if (!service) return;
-
-        // Planning
-        EditorGUILayout.LabelField("Set build planning");
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         EditorGUILayout.BeginHorizontal();
+
         for (int _day = -1; _day < 7; _day++)
         {
             EditorGUILayout.BeginVertical();
-            EditorGUILayout.LabelField(GetDay(_day));
+            EditorGUILayout.LabelField(GetDay(_day), ALS_WindowStyle.GetLabelStyle(16, Color.white));
 
             for (int _hour = 0; _hour < 24; _hour++)
             {
                 if (_day == -1)
                 {
-                    EditorGUILayout.LabelField($"{_hour} :");
-                    EditorGUILayout.Space(11.0f);
+                    EditorGUILayout.LabelField($"{_hour}H", ALS_WindowStyle.GetLabelStyle(16, Color.white));
                     continue;
                 }
 
-                bool _task = service.IsOpen;
-
-                if (GUILayout.Button("", ALS_WindowStyle.GetButtonStyle(skin.button, 0, Color.white, _task ? Color.green : Color.red)))
-                {
-                    service.Planning.UpdatePlanning(_day, _hour, !_task);
-                }
-
+                bool _status = EditorGUILayout.Toggle(service.Planning[_day, _hour]);
+                service.Planning.UpdatePlanning(_day, _hour, _status);
                 EditorGUILayout.Space(5.0f);
             }
 
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space(3.0f);
         }
+
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndScrollView();
+
+        // Close the current window
+        if (GUILayout.Button("Close", ALS_WindowStyle.GetButtonStyle(skin.button, 22, Color.white, Color.green)))
+        {
+            Close();
+        }
     }
     string GetDay(int _dayIndex)
     {
@@ -86,4 +85,6 @@ public class ALS_BuildWindow : EditorWindow
                 return "";
         }
     }
+
+    public void SetTarget(ALS_Service _target) => service = _target;
 }

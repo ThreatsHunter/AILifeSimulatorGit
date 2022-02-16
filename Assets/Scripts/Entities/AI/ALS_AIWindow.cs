@@ -51,11 +51,7 @@ public class ALS_AIWindow : EditorWindow
                     continue;
                 }
 
-<<<<<<< HEAD
-                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
-=======
                _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
->>>>>>> Thomas
                 if (!_service) continue;
                 ai.Planning.UpdatePlanning(_day, _hour, _service);
                 EditorGUILayout.Space(5.0f);
@@ -74,8 +70,6 @@ public class ALS_AIWindow : EditorWindow
             Close();
         }
     }
-<<<<<<< HEAD
-=======
     string GetDay(int _dayIndex)
     {
         switch (_dayIndex)
@@ -98,7 +92,6 @@ public class ALS_AIWindow : EditorWindow
                 return "";
         }
     }
->>>>>>> Thomas
 
     public void SetTarget(ALS_AI _target) => ai = _target;
 }
