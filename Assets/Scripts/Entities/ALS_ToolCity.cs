@@ -9,14 +9,15 @@ public class ALS_ToolCity
     {
         EditorWindow.GetWindow<ALS_CreateBuildWindow>(true, "Create Build");
     }
-    
+
     [MenuItem("Tool / AI")]
     public static void InitAI()
     {
-        GameObject _ai = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        if (!_ai) return;
-        _ai.name = "AI";
-        _ai.AddComponent<ALS_AI>();
-        _ai.AddComponent<NavMeshAgent>();
+        GameObject _object = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        if (!_object) return;
+        _object.name = "AI";
+        _object.transform.position = new Vector3(0.0f, 3.0f, -13.0f); 
+        _object.AddComponent<ALS_AI>();
+        _object.AddComponent<NavMeshAgent>();
     }
 }

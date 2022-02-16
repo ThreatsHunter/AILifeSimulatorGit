@@ -3,13 +3,13 @@ using UnityEngine.AI;
 
 public class ALS_AI : MonoBehaviour
 {
-    [SerializeField] ALS_AIPlanning planning = new ALS_AIPlanning();
+    [SerializeField] ALS_Home home = null;
     [SerializeField] NavMeshAgent navigation = null;
     [SerializeField] ALS_Build currentTarget = null;
 
-    public bool IsValid => navigation;
+    public bool IsValid => home && navigation;
     public Vector3 TargetPosition => currentTarget ? currentTarget.transform.position : Vector3.zero;
-    public ALS_AIPlanning Planning => planning;
+    public ALS_AIPlanning Planning { get; set; } = new ALS_AIPlanning();
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class ALS_AI : MonoBehaviour
     void SetCurrentTarget(int _day, int _hour)
     {
         if (!IsValid) return;
-        currentTarget = planning[_day, _hour];
+        currentTarget = Planning[_day, _hour] ? Planning[_day, _hour] : (ALS_Build)home;
     }
 
     public void SetActive(bool _status)
