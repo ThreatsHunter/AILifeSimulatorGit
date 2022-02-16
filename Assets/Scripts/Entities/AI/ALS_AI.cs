@@ -6,6 +6,7 @@ public class ALS_AI : MonoBehaviour
     [SerializeField] ALS_Home home = null;
     [SerializeField] NavMeshAgent navigation = null;
     [SerializeField] ALS_Build currentTarget = null;
+    [SerializeField] ALS_AIPlanning planning = new ALS_AIPlanning();
 
     public bool IsValid => home && navigation;
     public Vector3 TargetPosition => currentTarget ? currentTarget.transform.position : Vector3.zero;
