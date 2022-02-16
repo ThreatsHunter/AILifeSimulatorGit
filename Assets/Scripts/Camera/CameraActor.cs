@@ -37,7 +37,7 @@ public class CameraActor : MonoBehaviour
 
         float _y = tpsCamera.Settings.Offset.Y;
         _y += _axis * fScrollSpeed;
-        _y = Mathf.Clamp(_y, 10, fMaxZoom);
+        _y = Mathf.Clamp(_y, 2, fMaxZoom);
         tpsCamera.Settings.SetYOffset(_y);
     }
     #endregion

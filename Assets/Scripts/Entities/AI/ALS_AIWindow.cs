@@ -40,7 +40,6 @@ public class ALS_AIWindow : EditorWindow
 
             for (int _hour = 0; _hour < 24; _hour++)
             {
-                ALS_Service _service = null;
                 if (_day == -1)
                 {
                     //EditorGUILayout.BeginHorizontal();
@@ -51,9 +50,9 @@ public class ALS_AIWindow : EditorWindow
                     continue;
                 }
 
-               _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
                 if (!_service) continue;
-                ai.Planning.UpdatePlanning(_day, _hour, _service);
+                ai.Planning[_day, _hour] = _service;
                 EditorGUILayout.Space(5.0f);
             }
 
