@@ -36,18 +36,17 @@ public class ALS_AIWindow : EditorWindow
         for (int _day = -1; _day < 7; _day++)
         {
             EditorGUILayout.BeginVertical();
-            EditorGUILayout.LabelField(World.Instance?.GetDay(_day));
+            EditorGUILayout.LabelField(GetDay(_day));
 
             for (int _hour = 0; _hour < 24; _hour++)
             {
                 if (_day == -1)
                 {
                     EditorGUILayout.LabelField($"{_hour} :");
-                    EditorGUILayout.Space(11.0f);
                     continue;
                 }
 
-                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
                 if (!_service) continue;
                 ai.Planning.UpdatePlanning(_day, _hour, _service);
                 EditorGUILayout.Space(5.0f);
@@ -64,6 +63,28 @@ public class ALS_AIWindow : EditorWindow
         if (GUILayout.Button("Close", ALS_WindowStyle.GetButtonStyle(skin.button, 22, Color.white, Color.green)))
         {
             Close();
+        }
+    }
+    string GetDay(int _dayIndex)
+    {
+        switch (_dayIndex)
+        {
+            case 0:
+                return "Lundi :";
+            case 1:
+                return "Mardi :";
+            case 2:
+                return "Mercredi :";
+            case 3:
+                return "Jeudi :";
+            case 4:
+                return "Vendredi :";
+            case 5:
+                return "Samedi :";
+            case 6:
+                return "Dimanche :";
+            default:
+                return "";
         }
     }
 
