@@ -8,8 +8,8 @@ public class ALS_Service : ALS_Build
     public string ServiceName { get; set; } = string.Empty;
     public ALS_BuildPlanning Planning => buildPlanning;
 
-    protected override bool CanEnter()
+    /*public override bool CanEnter()
     {
         return base.CanEnter() && IsOpen;
-    }
+    }*/
 }

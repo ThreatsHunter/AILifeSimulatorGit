@@ -43,19 +43,16 @@ public class ALS_AIWindow : EditorWindow
                 ALS_Service _service = null;
                 if (_day == -1)
                 {
-                    //EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField($"{_hour}H", ALS_WindowStyle.GetLabelStyle(16, Color.white));
-                    //GUILayout.FlexibleSpace();
-                    //_service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
-                    //EditorGUILayout.EndHorizontal();
+                    GUILayout.FlexibleSpace();
+                    _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                    EditorGUILayout.EndHorizontal();
                     continue;
                 }
 
-<<<<<<< HEAD
-                ALS_Service _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
-=======
-               _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
->>>>>>> Thomas
+                _service = (ALS_Service)EditorGUILayout.ObjectField("Service :", ai.Planning[_day, _hour], typeof(ALS_Service), true);
+                _service = (ALS_Service)EditorGUILayout.ObjectField(ai.Planning[_day, _hour], typeof(ALS_Service), true);
                 if (!_service) continue;
                 ai.Planning.UpdatePlanning(_day, _hour, _service);
                 EditorGUILayout.Space(5.0f);
@@ -74,8 +71,6 @@ public class ALS_AIWindow : EditorWindow
             Close();
         }
     }
-<<<<<<< HEAD
-=======
     string GetDay(int _dayIndex)
     {
         switch (_dayIndex)
@@ -98,7 +93,6 @@ public class ALS_AIWindow : EditorWindow
                 return "";
         }
     }
->>>>>>> Thomas
 
     public void SetTarget(ALS_AI _target) => ai = _target;
 }
